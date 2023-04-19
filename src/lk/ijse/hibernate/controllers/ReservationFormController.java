@@ -10,6 +10,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.hibernate.bo.BOFactory;
+import lk.ijse.hibernate.bo.BOTypes;
 import lk.ijse.hibernate.bo.custom.ReservationBO;
 import lk.ijse.hibernate.bo.custom.ReservationDetailBO;
 import lk.ijse.hibernate.bo.custom.RoomBO;
@@ -63,10 +65,10 @@ public class ReservationFormController {
     public ObservableList<CartTM> cartList = FXCollections.observableArrayList();
     public TableView tblCart;
 
-    StudentBO studentBO = new StudentBOImpl();
-    RoomBO roomBO = new RoomBOImpl();
-    ReservationBO reservationBO = new ReservationBOImpl();
-    ReservationDetailBO reservationDetailBO = new ReservationDetailBOImpl();
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOTypes.STUDENT);
+    RoomBO roomBO = (RoomBO) BOFactory.getBoFactory().getBO(BOTypes.ROOM);
+    ReservationBO reservationBO = (ReservationBO) BOFactory.getBoFactory().getBO(BOTypes.RESERVATION);
+    ReservationDetailBO reservationDetailBO = (ReservationDetailBO) BOFactory.getBoFactory().getBO(BOTypes.RESERVATIONDETAIL);
 
     public void initialize(){
         loadPaymentType();

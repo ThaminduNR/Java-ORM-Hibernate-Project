@@ -9,6 +9,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.hibernate.bo.BOFactory;
+import lk.ijse.hibernate.bo.BOTypes;
 import lk.ijse.hibernate.bo.custom.UserBo;
 import lk.ijse.hibernate.bo.custom.impl.UserBOImpl;
 import lk.ijse.hibernate.dto.UserDTO;
@@ -26,7 +28,7 @@ public class UserFormController {
     public TableColumn colName;
     public TableColumn colPws;
 
-    UserBo userBo = new UserBOImpl();
+    UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOTypes.USER);
 
     public void initialize(){
 

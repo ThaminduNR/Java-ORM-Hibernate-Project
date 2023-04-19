@@ -1,6 +1,8 @@
 package lk.ijse.hibernate.bo.custom.impl;
 
 import lk.ijse.hibernate.bo.custom.ReservationDetailBO;
+import lk.ijse.hibernate.dao.DAOFactory;
+import lk.ijse.hibernate.dao.DAOTypes;
 import lk.ijse.hibernate.dao.custom.ReservationDetailDAO;
 import lk.ijse.hibernate.dao.custom.RoomDAO;
 import lk.ijse.hibernate.dao.custom.impl.ReservationDetailDAOImpl;
@@ -19,8 +21,8 @@ import java.util.List;
 
 public class ReservationDetailBOImpl implements ReservationDetailBO {
 
-    ReservationDetailDAO reservationDetailDAO = new ReservationDetailDAOImpl();
-    RoomDAO roomDAO = new RoomDAOImpl();
+    ReservationDetailDAO reservationDetailDAO = (ReservationDetailDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.RESERVATIONDETAIL);
+    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.ROOM);
 
 
     @Override

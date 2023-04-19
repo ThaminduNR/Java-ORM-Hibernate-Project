@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.hibernate.bo.BOFactory;
+import lk.ijse.hibernate.bo.BOTypes;
 import lk.ijse.hibernate.bo.custom.RoomBO;
 import lk.ijse.hibernate.bo.custom.impl.RoomBOImpl;
 import lk.ijse.hibernate.dto.RoomDTO;
@@ -32,7 +34,7 @@ public class RoomMangeFormController {
     public TableColumn<RoomTM, String> colKeyMoney;
     public TableColumn<RoomTM, String> colQty;
 
-    RoomBO roomBO = new RoomBOImpl();
+    RoomBO roomBO = (RoomBO) BOFactory.getBoFactory().getBO(BOTypes.ROOM);
 
     public void initialize(){
         loadRoomType();

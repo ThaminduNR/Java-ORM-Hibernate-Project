@@ -2,6 +2,8 @@ package lk.ijse.hibernate.bo.custom.impl;
 
 import javafx.collections.ObservableList;
 import lk.ijse.hibernate.bo.custom.RoomBO;
+import lk.ijse.hibernate.dao.DAOFactory;
+import lk.ijse.hibernate.dao.DAOTypes;
 import lk.ijse.hibernate.dao.custom.RoomDAO;
 import lk.ijse.hibernate.dao.custom.impl.RoomDAOImpl;
 import lk.ijse.hibernate.dto.RoomDTO;
@@ -14,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class RoomBOImpl implements RoomBO {
-    RoomDAO roomDAO = new RoomDAOImpl();
+    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.ROOM);
     @Override
     public boolean addRoom(RoomDTO roomDTO) throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();

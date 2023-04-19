@@ -9,6 +9,8 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.hibernate.bo.BOFactory;
+import lk.ijse.hibernate.bo.BOTypes;
 import lk.ijse.hibernate.bo.custom.StudentBO;
 import lk.ijse.hibernate.bo.custom.impl.StudentBOImpl;
 import lk.ijse.hibernate.dto.StudentDTO;
@@ -36,7 +38,7 @@ public class StudentManageFormController {
     public TableColumn<StudentTM, String> colGender;
     public ComboBox cmbGender;
 
-    StudentBO studentBO = new StudentBOImpl();
+    StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOTypes.STUDENT);
 
     public void initialize(){
         loadAllStudent();

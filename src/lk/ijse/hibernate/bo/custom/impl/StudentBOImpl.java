@@ -2,6 +2,8 @@ package lk.ijse.hibernate.bo.custom.impl;
 
 import javafx.collections.ObservableList;
 import lk.ijse.hibernate.bo.custom.StudentBO;
+import lk.ijse.hibernate.dao.DAOFactory;
+import lk.ijse.hibernate.dao.DAOTypes;
 import lk.ijse.hibernate.dao.custom.StudentDAO;
 import lk.ijse.hibernate.dao.custom.impl.StudentDAOImpl;
 import lk.ijse.hibernate.dto.StudentDTO;
@@ -15,7 +17,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class StudentBOImpl implements StudentBO {
-    StudentDAO studentDAO = new StudentDAOImpl();
+
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.STUDENT);
     @Override
     public boolean addStudent(StudentDTO studentDTO) throws IOException {
         Session session = FactoryConfiguration.getInstance().getSession();

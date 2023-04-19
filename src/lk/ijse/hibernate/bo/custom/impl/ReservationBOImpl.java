@@ -2,6 +2,8 @@ package lk.ijse.hibernate.bo.custom.impl;
 
 import lk.ijse.hibernate.bo.custom.ReservationBO;
 import lk.ijse.hibernate.bo.custom.RoomBO;
+import lk.ijse.hibernate.dao.DAOFactory;
+import lk.ijse.hibernate.dao.DAOTypes;
 import lk.ijse.hibernate.dao.custom.ReservationDAO;
 import lk.ijse.hibernate.dao.custom.RoomDAO;
 import lk.ijse.hibernate.dao.custom.impl.ReservationDAOImpl;
@@ -19,9 +21,9 @@ import java.io.IOException;
 
 public class ReservationBOImpl implements ReservationBO {
 
-    ReservationDAO reservationDAO = new ReservationDAOImpl();
-    RoomDAO roomDAO = new RoomDAOImpl();
-    RoomBO roomBO = new RoomBOImpl();
+    ReservationDAO reservationDAO = (ReservationDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.RESERVATION);
+    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.RESERVATION);
+
 
     @Override
     public boolean addReservation(ReservationDTO reservationDTO) throws IOException {

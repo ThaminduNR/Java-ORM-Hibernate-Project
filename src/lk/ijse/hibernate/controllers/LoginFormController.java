@@ -10,6 +10,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import lk.ijse.hibernate.bo.BOFactory;
+import lk.ijse.hibernate.bo.BOTypes;
 import lk.ijse.hibernate.bo.custom.UserBo;
 import lk.ijse.hibernate.bo.custom.impl.UserBOImpl;
 import lk.ijse.hibernate.dto.UserDTO;
@@ -25,7 +27,7 @@ public class LoginFormController {
     public TextField txtpwsText;
     public CheckBox onCheck;
 
-    UserBo userBo = new UserBOImpl();
+    UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOTypes.USER);
 
     public void loginOnAction(ActionEvent actionEvent) throws IOException {
         String user = txtUser.getText();
