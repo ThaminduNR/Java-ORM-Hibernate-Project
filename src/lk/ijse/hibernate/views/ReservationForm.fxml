@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="reservationPane" prefHeight="929.0" prefWidth="1220.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hibernate.controllers.ReservationFormController">
+   <AnchorPane prefHeight="83.0" prefWidth="1226.0" styleClass="student-form-up" stylesheets="@../style/main.css">
+      <Button layoutX="1140.0" layoutY="31.0" mnemonicParsing="false" onAction="#backToHomeOnAction" prefHeight="27.0" prefWidth="63.0" />
+      <FontAwesomeIconView glyphName="ARROW_LEFT" layoutX="1163.0" layoutY="53.0" size="20" />
+   </AnchorPane>
+   <Text fill="WHITE" layoutX="28.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation Manage">
+      <font>
+         <Font name="Microsoft Sans Serif" size="24.0" />
+      </font>
+   </Text>
+   <Text layoutX="42.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation No" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtResId" layoutX="42.0" layoutY="135.0" prefHeight="34.0" prefWidth="187.0" />
+   <Text layoutX="277.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Id" wrappingWidth="110.13671875" />
+   <Text layoutX="505.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Student Name" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtsName" editable="false" layoutX="505.0" layoutY="135.0" prefHeight="34.0" prefWidth="187.0" />
+   <ComboBox fx:id="cmbsId" layoutX="272.0" layoutY="136.0" prefHeight="31.0" prefWidth="194.0" />
+   <Text layoutX="42.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type Id" wrappingWidth="110.13671875" />
+   <ComboBox fx:id="cmbRoomId" layoutX="42.0" layoutY="326.0" prefHeight="31.0" prefWidth="187.0" />
+   <Text layoutX="273.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Room Type" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtRoomType" editable="false" layoutX="273.0" layoutY="326.0" prefHeight="34.0" prefWidth="194.0" />
+   <Text layoutX="504.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Availability (QTY)" wrappingWidth="137.13671875" />
+   <TextField fx:id="txtavailable" editable="false" layoutX="502.0" layoutY="326.0" prefHeight="34.0" prefWidth="187.0" />
+   <Text layoutX="732.0" layoutY="307.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Key Money" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtkeyMoney" editable="false" layoutX="732.0" layoutY="327.0" prefHeight="34.0" prefWidth="187.0" />
+   <Text layoutX="962.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pay Amount" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtpayAmount" layoutX="955.0" layoutY="327.0" prefHeight="34.0" prefWidth="194.0" />
+   <JFXDatePicker fx:id="txtDate" layoutX="44.0" layoutY="416.0" prefHeight="31.0" prefWidth="194.0" />
+   <Text layoutX="46.0" layoutY="403.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="110.13671875" />
+   <Button layoutX="1066.0" layoutY="422.0" mnemonicParsing="false" onAction="#addCartOnActon" prefHeight="41.0" prefWidth="121.0" text="Add to Cart" />
+   <Button layoutX="918.0" layoutY="422.0" mnemonicParsing="false" onAction="#addStudentOnAction" prefHeight="41.0" prefWidth="121.0" text="Add Student" />
+   <TableView fx:id="tblCart" layoutX="37.0" layoutY="498.0" prefHeight="345.0" prefWidth="1149.0">
+      <columns>
+         <TableColumn fx:id="colresId" prefWidth="120.0" text="Reservation No" />
+         <TableColumn fx:id="colSid" minWidth="7.0" prefWidth="112.0" text="Student ID" />
+         <TableColumn fx:id="colRoomTypeId" minWidth="7.0" prefWidth="129.0" text="Room Type ID" />
+         <TableColumn fx:id="comRoomType" minWidth="7.0" prefWidth="137.0" text="Room Type" />
+         <TableColumn fx:id="colKeyMoney" minWidth="7.0" prefWidth="135.0" text="Key Money" />
+         <TableColumn fx:id="colPayAmount" minWidth="7.0" prefWidth="132.0" text="Pay Amount" />
+         <TableColumn fx:id="colDate" minWidth="7.0" prefWidth="140.0" text="Date" />
+         <TableColumn fx:id="colStatus" minWidth="7.0" prefWidth="117.0" text="Status" />
+         <TableColumn fx:id="colAction" minWidth="7.0" prefWidth="126.0" text="Action" />
+      </columns>
+   </TableView>
+   <Button layoutX="1031.0" layoutY="865.0" mnemonicParsing="false" onAction="#RoomReserveOnAction" prefHeight="41.0" prefWidth="148.0" text="Reserve" />
+   <Text layoutX="272.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" wrappingWidth="110.13671875" />
+   <ComboBox fx:id="cmbstatus" layoutX="272.0" layoutY="423.0" prefHeight="31.0" prefWidth="194.0" />
+   <Text layoutX="736.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Addess" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtAddress" editable="false" layoutX="732.0" layoutY="135.0" prefHeight="34.0" prefWidth="194.0" />
+   <Text layoutX="957.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtContact" editable="false" layoutX="957.0" layoutY="135.0" prefHeight="34.0" prefWidth="194.0" />
+   <Text layoutX="42.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtDob" editable="false" layoutX="42.0" layoutY="221.0" prefHeight="34.0" prefWidth="187.0" />
+   <Text layoutX="272.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="110.13671875" />
+   <TextField fx:id="txtGender" editable="false" layoutX="272.0" layoutY="222.0" prefHeight="34.0" prefWidth="194.0" />
+   <Separator layoutX="28.0" layoutY="275.0" prefHeight="4.0" prefWidth="1184.0" />
+</AnchorPane>

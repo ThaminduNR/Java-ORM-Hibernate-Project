@@ -1,0 +1,12 @@
+
+/*login form*/
+.side-bar{
+    -fx-background-color: #34495e;
+}
+
+
+/*Student Form*/
+.student-form-up{
+    -fx-background-color: linear-gradient(to top right, #151d26, #34495e);
+    /*-fx-background-color: linear-gradient(to bottom, #ff7f50, #F4F4F4);*/
+}
