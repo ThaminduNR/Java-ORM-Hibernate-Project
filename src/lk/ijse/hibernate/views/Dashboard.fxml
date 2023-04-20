@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.Bloom?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="dashboardPane" prefHeight="766.0" prefWidth="1226.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -9,9 +13,67 @@
          <effect>
             <Bloom threshold="0.0" />
          </effect>
+         <children>
+            <Label layoutX="14.0" layoutY="16.0" text="Students">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="69.0" text="03">
+               <font>
+                  <Font name="System Bold" size="52.0" />
+               </font>
+            </Label>
+         </children>
       </AnchorPane>
-      <AnchorPane layoutX="316.0" layoutY="53.0" prefHeight="200.0" prefWidth="176.0" styleClass="plate-1" stylesheets="@../style/main.css" />
-      <AnchorPane layoutX="78.0" layoutY="324.0" prefHeight="200.0" prefWidth="168.0" styleClass="navigation" stylesheets="@../style/main.css" />
+      <AnchorPane layoutX="316.0" layoutY="53.0" prefHeight="200.0" prefWidth="176.0" styleClass="plate-1" stylesheets="@../style/main.css">
+         <children>
+            <Label layoutX="32.0" layoutY="16.0" text="Rooms" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="57.0" layoutY="69.0" text="05" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="52.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <AnchorPane layoutX="78.0" layoutY="324.0" prefHeight="200.0" prefWidth="168.0" styleClass="navigation" stylesheets="@../style/main.css">
+         <children>
+            <Label layoutX="10.0" layoutY="20.0" text="Booking Rooms" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="69.0" text="02" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="52.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
       <AnchorPane layoutX="563.0" layoutY="53.0" prefHeight="200.0" prefWidth="619.0" styleClass="plate" stylesheets="@../style/main.css" />
+      <AnchorPane layoutX="316.0" layoutY="324.0" prefHeight="200.0" prefWidth="176.0" styleClass="plate" stylesheets="@../style/main.css">
+         <effect>
+            <Bloom threshold="0.0" />
+         </effect>
+         <children>
+            <Label layoutX="14.0" layoutY="16.0" text="Available">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="69.0" text="03">
+               <font>
+                  <Font name="System Bold" size="52.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="435.0" fitWidth="619.0" layoutX="570.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/pngegg%20(7).png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
