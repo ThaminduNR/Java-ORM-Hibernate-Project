@@ -54,6 +54,21 @@ public class RoomMangeFormController {
         stage.show();
     }
 
+    public boolean idAlreadyExist(String id){
+        ObservableList<String> allRoomIds = null;
+        try {
+            allRoomIds = roomBO.getAllRoomIds();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String roomId:allRoomIds) {
+            if (id.equals(roomId)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void addRoomOnAction(ActionEvent actionEvent) {
         if (txtRoomId.getText().isEmpty() || !txtRoomId.getText().matches("^(RM)([0-9]{4,}$)")){
             new Alert(Alert.AlertType.ERROR, "Room ID is invalid or empty", ButtonType.OK).show();
@@ -76,6 +91,9 @@ public class RoomMangeFormController {
             txtQty.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
             txtQty.requestFocus();
 
+        }else if (idAlreadyExist(txtRoomId.getText())){
+            new Alert(Alert.AlertType.ERROR, "Room ID Already Exists", ButtonType.OK).show();
+
         }else {
             String id= txtRoomId.getText();
             String type = cmbRoomType.getValue();
@@ -92,12 +110,21 @@ public class RoomMangeFormController {
 
             if (added){
                 new Alert(Alert.AlertType.INFORMATION,"Added Successful",ButtonType.OK).show();
+               /*setFocusColor();*/
+                loadAllRooms();
+                clearFields();
             }else {
                 new Alert(Alert.AlertType.INFORMATION,"Added failed",ButtonType.OK).show();
             }
-
         }
 
+    }
+
+    public void setFocusColor(){
+        txtRoomId.setStyle("-fx-text-box-border: #039ED3; -fx-focus-color: #039ED3;");
+        cmbRoomType.setStyle("-fx-text-box-border:#039ED3; -fx-focus-color:#039ED3;");
+        txtKeyMoney.setStyle("-fx-text-box-border: #039ED3; -fx-focus-color: #039ED3;");
+        txtQty.setStyle("-fx-text-box-border: #039ED3; -fx-focus-color: #039ED3");
     }
 
     public void updateRoomOnAction(ActionEvent actionEvent) {
@@ -121,6 +148,8 @@ public class RoomMangeFormController {
             }
             if (updated){
                 new Alert(Alert.AlertType.INFORMATION,"Update Successful").show();
+                loadAllRooms();
+                clearFields();
             }else {
                 new Alert(Alert.AlertType.INFORMATION,"Update failed").show();
             }
@@ -145,6 +174,8 @@ public class RoomMangeFormController {
                     boolean deleted = roomBO.deleteRoom(id);
                     if (deleted){
                         new Alert(Alert.AlertType.INFORMATION,"Delete Successful").show();
+                        loadAllRooms();
+                        clearFields();
                     }else {
                         new Alert(Alert.AlertType.ERROR,"Delete failed").show();
                     }
@@ -204,5 +235,11 @@ public class RoomMangeFormController {
     private void loadRoomType() {
         ObservableList<String> fuelList = FXCollections.observableArrayList("Non-AC", "Non-AC / Food","AC","AC / Food ");
         cmbRoomType.setItems(fuelList);
+    }
+    private void clearFields(){
+        txtRoomId.clear();
+        cmbRoomType.getSelectionModel().clearSelection();
+        txtKeyMoney.clear();
+        txtQty.clear();
     }
 }

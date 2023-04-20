@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import lk.ijse.hibernate.bo.BOFactory;
 import lk.ijse.hibernate.bo.BOTypes;
@@ -41,6 +40,7 @@ public class StudentManageFormController {
 
     StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBO(BOTypes.STUDENT);
 
+
     public void initialize(){
         loadAllStudent();
         setValueFactory();
@@ -57,6 +57,22 @@ public class StudentManageFormController {
         currentStage.hide();
         stage.show();
 
+    }
+
+    public boolean idAlreadyExist(String id){
+        ObservableList<String> allStudentIds = null;
+        try {
+            allStudentIds = studentBO.getAllStudentIds();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String ids:allStudentIds) {
+            if (id.equals(ids)){
+//                new Alert(Alert.AlertType.ERROR, "Student ID is Already Exists", ButtonType.OK).show();
+                return true;
+            }
+        }
+        return false;
     }
 
     public void addStudentOnAction(ActionEvent actionEvent) throws IOException {
@@ -97,6 +113,8 @@ public class StudentManageFormController {
             cmbGender.requestFocus();
             return;
 
+        }else if (idAlreadyExist(txtsId.getText())){
+            new Alert(Alert.AlertType.ERROR, "Student ID is Already Exists", ButtonType.OK).show();
         }else {
             String id= txtsId.getText();
             String  name = txtName.getText();
@@ -111,6 +129,7 @@ public class StudentManageFormController {
             if (isAdded){
                 new Alert(Alert.AlertType.INFORMATION, "Added Success").show();
                 loadAllStudent();
+                clearFields();
             }else {
                 new Alert(Alert.AlertType.ERROR, "Added Failed").show();
             }
@@ -142,6 +161,7 @@ public class StudentManageFormController {
             if (isUpdated){
                 new Alert(Alert.AlertType.INFORMATION,"Update Success...").show();
                 loadAllStudent();
+                clearFields();
             }else{
                 new Alert(Alert.AlertType.ERROR, "Update Failed").show();
             }
@@ -154,8 +174,7 @@ public class StudentManageFormController {
             new Alert(Alert.AlertType.ERROR, "Text fields is Empty !",ButtonType.OK).show();
 
         }else {
-
-            String id = txtsId.getText();
+           /* String id = txtsId.getText();
             try {
                 boolean isDeleted = studentBO.deleteStudent(id);
                 if (isDeleted){
@@ -166,7 +185,30 @@ public class StudentManageFormController {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            }*/
+
+            String id= txtsId.getText();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Log Out");
+            alert.setContentText("Are you sure want to Delete?");
+
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                try {
+                    boolean deleted = studentBO.deleteStudent(id);
+                    if (deleted){
+                        new Alert(Alert.AlertType.INFORMATION,"Delete Successful").show();
+                        loadAllStudent();
+                        clearFields();
+                    }else {
+                        new Alert(Alert.AlertType.ERROR,"Delete failed").show();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Try Again");
             }
+
 
         }
 
@@ -227,4 +269,14 @@ public class StudentManageFormController {
         ObservableList<String> fuelList = FXCollections.observableArrayList("Male", "Female","Others");
         cmbGender.setItems(fuelList);
     }
+
+    private void clearFields(){
+        txtsId.clear();
+        txtName.clear();
+        txtAddress.clear();
+        txtDate.clear();
+        txtNumber.clear();
+        cmbGender.getSelectionModel().clearSelection();
+    }
+
 }
