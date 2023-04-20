@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import lk.ijse.hibernate.bo.BOFactory;
 import lk.ijse.hibernate.bo.BOTypes;
@@ -59,61 +60,114 @@ public class StudentManageFormController {
     }
 
     public void addStudentOnAction(ActionEvent actionEvent) throws IOException {
-        String id= txtsId.getText();
-        String  name = txtName.getText();
-        String address = txtAddress.getText();
-        String num = txtNumber.getText();
-        String date = txtDate.getText();
-        String gender = (String) cmbGender.getValue();
 
-        StudentDTO studentDTO = new StudentDTO(id,name,address,num,date,gender);
-        boolean isAdded = studentBO.addStudent(studentDTO);
+        if(txtsId.getText().isEmpty() || !txtsId.getText().matches("^(M)([0-9]{5,}$)")) {
+            new Alert(Alert.AlertType.ERROR, "Student ID is invalid or empty", ButtonType.OK).show();
+            txtsId.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtsId.requestFocus();
+            return;
 
-        if (isAdded){
-            new Alert(Alert.AlertType.INFORMATION, "Added Success").show();
-            loadAllStudent();
+        } else if (txtName.getText().isEmpty() || !txtName.getText().matches("([\\w ]{1,})")) {
+            new Alert(Alert.AlertType.ERROR, "Name text invalid or empty", ButtonType.OK).show();
+            txtName.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtName.requestFocus();
+            return;
+
+        }else if (txtAddress.getText().isEmpty() || !txtAddress.getText().matches("^[0-9a-zA-Z]{2,}")) {
+            new Alert(Alert.AlertType.ERROR, "Address text invalid or empty",ButtonType.OK).show();
+            txtAddress.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtAddress.requestFocus();
+            return;
+
+        }else if (txtNumber.getText().isEmpty() || !txtNumber.getText().matches("^(075|077|071|074|078|076|070|072)([0-9]{7})$")){
+            new Alert(Alert.AlertType.ERROR, "Contact text invalid or empty", ButtonType.OK).show();
+            txtNumber.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtNumber.requestFocus();
+            return;
+
+        }else if (txtDate.getText().isEmpty() || !txtDate.getText().matches("^([0-9]{4})(-)([0-9]{2})(-)([0-9]{2}$)")){
+            new Alert(Alert.AlertType.ERROR, "Date of birth text empty or format must be like (ex : 2000-02-02)", ButtonType.OK).show();
+            txtDate.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtDate.requestFocus();
+            return;
+
+        }else if (cmbGender.getSelectionModel().isSelected(-1)){
+            new Alert(Alert.AlertType.ERROR, "Please select the gender !",ButtonType.OK).show();
+            cmbGender.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            cmbGender.requestFocus();
+            return;
+
         }else {
-            new Alert(Alert.AlertType.ERROR, "Added Failed").show();
+            String id= txtsId.getText();
+            String  name = txtName.getText();
+            String address = txtAddress.getText();
+            String num = txtNumber.getText();
+            String date = txtDate.getText();
+            String gender = (String) cmbGender.getValue();
+
+            StudentDTO studentDTO = new StudentDTO(id,name,address,num,date,gender);
+            boolean isAdded = studentBO.addStudent(studentDTO);
+
+            if (isAdded){
+                new Alert(Alert.AlertType.INFORMATION, "Added Success").show();
+                loadAllStudent();
+            }else {
+                new Alert(Alert.AlertType.ERROR, "Added Failed").show();
+            }
         }
 
     }
 
     public void updateOnAction(ActionEvent actionEvent) {
-        String id= txtsId.getText();
-        String name = txtName.getText();
-        String address=txtAddress.getText();
-        String num = txtNumber.getText();
-        String date = txtDate.getText();
-        String gender = (String) cmbGender.getValue();
 
-        StudentDTO studentDTO = new StudentDTO(id,name,address,num,date,gender);
-        boolean isUpdated = false;
-        try {
-            isUpdated = studentBO.updateStudent(studentDTO);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (isUpdated){
-            new Alert(Alert.AlertType.INFORMATION,"Update Success...").show();
-            loadAllStudent();
-        }else{
-            new Alert(Alert.AlertType.ERROR, "Update Failed").show();
-        }
+        if (txtsId.getText().isEmpty()||txtName.getText().isEmpty()||txtAddress.getText().isEmpty()||txtNumber.getText().isEmpty()||
+        txtDate.getText().isEmpty()||cmbGender.getValue()==null){
+            new Alert(Alert.AlertType.ERROR, "Select the Field !",ButtonType.OK).show();
 
+        }else {
+            String id= txtsId.getText();
+            String name = txtName.getText();
+            String address=txtAddress.getText();
+            String num = txtNumber.getText();
+            String date = txtDate.getText();
+            String gender = (String) cmbGender.getValue();
+
+            StudentDTO studentDTO = new StudentDTO(id,name,address,num,date,gender);
+            boolean isUpdated = false;
+            try {
+                isUpdated = studentBO.updateStudent(studentDTO);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (isUpdated){
+                new Alert(Alert.AlertType.INFORMATION,"Update Success...").show();
+                loadAllStudent();
+            }else{
+                new Alert(Alert.AlertType.ERROR, "Update Failed").show();
+            }
+        }
     }
 
     public void DeleteOnaAction(ActionEvent actionEvent) {
-        String id = txtsId.getText();
-        try {
-            boolean isDeleted = studentBO.deleteStudent(id);
-            if (isDeleted){
-                new Alert(Alert.AlertType.INFORMATION,"Delete Success...").show();
-                loadAllStudent();
-            }else{
-                new Alert(Alert.AlertType.ERROR, "Delete Failed").show();
+        if (txtsId.getText().isEmpty()||txtName.getText().isEmpty()||txtAddress.getText().isEmpty()||txtNumber.getText().isEmpty()||
+                txtDate.getText().isEmpty()||cmbGender.getValue()==null){
+            new Alert(Alert.AlertType.ERROR, "Select the Field !",ButtonType.OK).show();
+
+        }else {
+
+            String id = txtsId.getText();
+            try {
+                boolean isDeleted = studentBO.deleteStudent(id);
+                if (isDeleted){
+                    new Alert(Alert.AlertType.INFORMATION,"Delete Success...").show();
+                    loadAllStudent();
+                }else{
+                    new Alert(Alert.AlertType.ERROR, "Delete Failed").show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+
         }
 
     }
