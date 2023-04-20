@@ -122,7 +122,7 @@ public class StudentManageFormController {
 
         if (txtsId.getText().isEmpty()||txtName.getText().isEmpty()||txtAddress.getText().isEmpty()||txtNumber.getText().isEmpty()||
         txtDate.getText().isEmpty()||cmbGender.getValue()==null){
-            new Alert(Alert.AlertType.ERROR, "Select the Field !",ButtonType.OK).show();
+            new Alert(Alert.AlertType.ERROR, "Text fields is Empty !",ButtonType.OK).show();
 
         }else {
             String id= txtsId.getText();
@@ -151,7 +151,7 @@ public class StudentManageFormController {
     public void DeleteOnaAction(ActionEvent actionEvent) {
         if (txtsId.getText().isEmpty()||txtName.getText().isEmpty()||txtAddress.getText().isEmpty()||txtNumber.getText().isEmpty()||
                 txtDate.getText().isEmpty()||cmbGender.getValue()==null){
-            new Alert(Alert.AlertType.ERROR, "Select the Field !",ButtonType.OK).show();
+            new Alert(Alert.AlertType.ERROR, "Text fields is Empty !",ButtonType.OK).show();
 
         }else {
 

@@ -107,11 +107,11 @@ public class ReservationFormController {
     public void addCartOnActon(ActionEvent actionEvent) {
 
 
-        if( txtResId.getText().equals("")||cmbsId.getValue()==null|| cmbRoomId.getValue()==null){
+        if( txtResId.getText().isEmpty()||cmbsId.getValue()==null|| cmbRoomId.getValue()==null){
             new Alert(Alert.AlertType.ERROR,"Fill in the Blanks").show();
 
-        }else if(txtRoomType.getText().equals("")|| txtpayAmount.getText().equals("")||txtDate.getValue()==null||
-                cmbstatus.getValue()==null||txtkeyMoney.getText().equals("")){
+        }else if(txtRoomType.getText().isEmpty()|| txtpayAmount.getText().isEmpty()||txtDate.getValue()==null||
+                cmbstatus.getValue()==null||txtkeyMoney.getText().isEmpty()){
 
             new Alert(Alert.AlertType.ERROR,"Fill in the Blanks").show();
 
@@ -168,15 +168,15 @@ public class ReservationFormController {
 
     public void RoomReserveOnAction(ActionEvent actionEvent) {
 
-        if (txtResId.getText().equals("")||cmbsId.getValue()==null|| cmbRoomId.getValue()==null){
+        if (txtResId.getText().isEmpty()||cmbsId.getValue()==null|| cmbRoomId.getValue()==null){
             new Alert(Alert.AlertType.ERROR,"Cart is Empty").show();
-        }else if(txtsName.getText().equals("")||txtAddress.getText().equals("")||txtContact.getText().equals("")){
+        }else if(txtsName.getText().isEmpty()||txtAddress.getText().isEmpty()||txtContact.getText().isEmpty()){
             new Alert(Alert.AlertType.ERROR,"Cart is Empty").show();
-        }else if(txtDob.getText().equals("")||txtGender.getText().equals("")||txtavailable.getText().equals("")){
+        }else if(txtDob.getText().isEmpty()||txtGender.getText().isEmpty()||txtavailable.getText().isEmpty()){
             new Alert(Alert.AlertType.ERROR,"Cart is Empty").show();
-        }else if(txtRoomType.getText().equals("")|| txtpayAmount.getText().equals("")||txtDate.getValue()==null){
+        }else if(txtRoomType.getText().isEmpty()|| txtpayAmount.getText().isEmpty()||txtDate.getValue()==null){
             new Alert(Alert.AlertType.ERROR,"Cart is Empty").show();
-        }else if (cmbstatus.getValue()==null||txtkeyMoney.getText().equals("")){
+        }else if (cmbstatus.getValue()==null||txtkeyMoney.getText().isEmpty()){
             new Alert(Alert.AlertType.ERROR,"Cart is Empty").show();
         }
         else {

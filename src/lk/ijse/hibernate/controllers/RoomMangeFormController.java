@@ -55,67 +55,108 @@ public class RoomMangeFormController {
     }
 
     public void addRoomOnAction(ActionEvent actionEvent) {
-        String id= txtRoomId.getText();
-        String type = cmbRoomType.getValue();
-        double keyMoney = Double.parseDouble(txtKeyMoney.getText());
-        int qty = Integer.parseInt(txtQty.getText());
+        if (txtRoomId.getText().isEmpty() || !txtRoomId.getText().matches("^(RM)([0-9]{4,}$)")){
+            new Alert(Alert.AlertType.ERROR, "Room ID is invalid or empty", ButtonType.OK).show();
+            txtRoomId.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtRoomId.requestFocus();
+            return;
 
-        RoomDTO roomDTO = new RoomDTO(id,type,keyMoney,qty);
-        boolean added = false;
-        try {
-            added = roomBO.addRoom(roomDTO);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        }else if (cmbRoomType.getSelectionModel().isSelected(-1)){
+            new Alert(Alert.AlertType.ERROR, "Please select the room type !", ButtonType.OK).show();
+            cmbRoomType.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            cmbRoomType.requestFocus();
 
-        if (added){
-            new Alert(Alert.AlertType.INFORMATION,"Added Successful").show();
+        }else if (txtKeyMoney.getText().isEmpty() || !txtKeyMoney.getText().matches("^[0-9]{2,}")){
+            new Alert(Alert.AlertType.ERROR, "Key money invalid or empty", ButtonType.OK).show();
+            txtKeyMoney.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtKeyMoney.requestFocus();
+
+        }else if (txtQty.getText().isEmpty() || !txtQty.getText().matches("^\\d+$")){
+            new Alert(Alert.AlertType.ERROR, "Qty text invalid or empty", ButtonType.OK).show();
+            txtQty.setStyle("-fx-text-box-border: #B22222; -fx-focus-color: #B22222;");
+            txtQty.requestFocus();
+
         }else {
-            new Alert(Alert.AlertType.INFORMATION,"Added failed").show();
+            String id= txtRoomId.getText();
+            String type = cmbRoomType.getValue();
+            double keyMoney = Double.parseDouble(txtKeyMoney.getText());
+            int qty = Integer.parseInt(txtQty.getText());
+
+            RoomDTO roomDTO = new RoomDTO(id,type,keyMoney,qty);
+            boolean added = false;
+            try {
+                added = roomBO.addRoom(roomDTO);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (added){
+                new Alert(Alert.AlertType.INFORMATION,"Added Successful",ButtonType.OK).show();
+            }else {
+                new Alert(Alert.AlertType.INFORMATION,"Added failed",ButtonType.OK).show();
+            }
+
         }
 
     }
 
     public void updateRoomOnAction(ActionEvent actionEvent) {
-        String id= txtRoomId.getText();
-        String type = cmbRoomType.getValue();
-        double keyMoney = Double.parseDouble(txtKeyMoney.getText());
-        int qty = Integer.parseInt(txtQty.getText());
 
-        RoomDTO roomDTO = new RoomDTO(id,type,keyMoney,qty);
-        boolean updated = false;
-        try {
-            updated = roomBO.updateRoom(roomDTO);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (updated){
-            new Alert(Alert.AlertType.INFORMATION,"Update Successful").show();
+        if (txtRoomId.getText().isEmpty()||cmbRoomType.getSelectionModel().isSelected(-1)||txtKeyMoney.getText().isEmpty()||
+                txtQty.getText().isEmpty()){
+            new Alert(Alert.AlertType.ERROR, "Text fields empty", ButtonType.OK).show();
+
         }else {
-            new Alert(Alert.AlertType.INFORMATION,"Update failed").show();
-        }
-    }
+            String id= txtRoomId.getText();
+            String type = cmbRoomType.getValue();
+            double keyMoney = Double.parseDouble(txtKeyMoney.getText());
+            int qty = Integer.parseInt(txtQty.getText());
 
-    public void DeleteRoomOnaAction(ActionEvent actionEvent) {
-        String id= txtRoomId.getText();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Log Out");
-        alert.setContentText("Are you sure want to Delete?");
-
-        if (alert.showAndWait().get() == ButtonType.OK) {
+            RoomDTO roomDTO = new RoomDTO(id,type,keyMoney,qty);
+            boolean updated = false;
             try {
-                boolean deleted = roomBO.deleteRoom(id);
-                if (deleted){
-                    new Alert(Alert.AlertType.INFORMATION,"Delete Successful").show();
-                }else {
-                    new Alert(Alert.AlertType.ERROR,"Delete failed").show();
-                }
+                updated = roomBO.updateRoom(roomDTO);
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        } else {
-            System.out.println("Try Again");
+            if (updated){
+                new Alert(Alert.AlertType.INFORMATION,"Update Successful").show();
+            }else {
+                new Alert(Alert.AlertType.INFORMATION,"Update failed").show();
+            }
         }
+
+    }
+
+    public void DeleteRoomOnaAction(ActionEvent actionEvent) {
+
+        if (txtRoomId.getText().isEmpty()||cmbRoomType.getSelectionModel().isSelected(-1)||txtKeyMoney.getText().isEmpty()||
+                txtQty.getText().isEmpty()){
+            new Alert(Alert.AlertType.ERROR, "Text fields empty", ButtonType.OK).show();
+
+        }else {
+            String id= txtRoomId.getText();
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Log Out");
+            alert.setContentText("Are you sure want to Delete?");
+
+            if (alert.showAndWait().get() == ButtonType.OK) {
+                try {
+                    boolean deleted = roomBO.deleteRoom(id);
+                    if (deleted){
+                        new Alert(Alert.AlertType.INFORMATION,"Delete Successful").show();
+                    }else {
+                        new Alert(Alert.AlertType.ERROR,"Delete failed").show();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("Try Again");
+            }
+        }
+
+
     }
 
     public  void loadAllRooms(){
