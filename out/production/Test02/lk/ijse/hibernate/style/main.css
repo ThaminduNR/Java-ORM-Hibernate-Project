@@ -1,7 +1,26 @@
 
 /*login form*/
 .side-bar{
-    -fx-background-color: #34495e;
+    -fx-background-color: linear-gradient(to top right, #151d26, #34495e);
+}
+
+.login-pane{
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0 , 0.0 , 0.0 , 10.0);
+}
+
+.login-button{
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-background-color: white;
+    -fx-border-color:black;
+}
+
+.login-button:hover{
+    -fx-background-color: linear-gradient(to top right, #151d26, #34495e);
+    -fx-text-fill: white;
 }
 
 
@@ -9,4 +28,43 @@
 .student-form-up{
     -fx-background-color: linear-gradient(to top right, #151d26, #34495e);
     /*-fx-background-color: linear-gradient(to bottom, #ff7f50, #F4F4F4);*/
+}
+
+/*Main Dashboard*/
+
+.navigation{
+    -fx-background-color: linear-gradient(to top right, #151d26, #34495e);
+    /*-fx-background-color: #34495e;*/
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+
+}
+.nav-btn{
+    -fx-background-color: #34495e;
+   /* -fx-background-color: linear-gradient(to bottom right, #151d26, #34495e);*/
+    -fx-text-fill: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-font-size: 16px;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0 , 0.0 , 0.0 , 10.0);
+    /*-fx-border-color:white ;*/
+}
+.nav-btn:hover{
+    -fx-background-color: white;
+    -fx-text-fill:#34495e ;
+    -fx-font-weight: 500;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-border-color:white ;
+}
+.plate{
+    -fx-background-color: white;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0 , 0.0 , 0.0 , 10.0);
+}.plate-1{
+    -fx-background-color: #34495e;
+    -fx-background-radius: 20px;
+    -fx-border-radius: 20px;
+    -fx-effect: dropShadow(three-pass-box,rgba(0,0,0,0.2),10.0 , 0.0 , 0.0 , 10.0);
 }

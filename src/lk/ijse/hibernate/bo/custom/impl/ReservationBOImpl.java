@@ -22,7 +22,7 @@ import java.io.IOException;
 public class ReservationBOImpl implements ReservationBO {
 
     ReservationDAO reservationDAO = (ReservationDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.RESERVATION);
-    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.RESERVATION);
+    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDAOFactory().getDAO(DAOTypes.ROOM);
 
 
     @Override

@@ -1,35 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="mainStage" prefHeight="579.0" prefWidth="1028.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hibernate.controllers.MainFormController">
+<AnchorPane fx:id="mainStage" prefHeight="818.0" prefWidth="1579.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hibernate.controllers.MainFormController">
    <children>
-      <Text layoutX="17.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hostel Management Stystem">
+      <AnchorPane fx:id="dashboardPane" layoutX="347.0" layoutY="56.0" opacity="0.0" prefHeight="747.0" prefWidth="1226.0">
+         <children>
+            <AnchorPane layoutX="74.0" layoutY="53.0" prefHeight="200.0" prefWidth="176.0" styleClass="plate" stylesheets="@../style/main.css">
+               <effect>
+                  <Bloom threshold="0.0" />
+               </effect>
+            </AnchorPane>
+            <AnchorPane layoutX="316.0" layoutY="53.0" prefHeight="200.0" prefWidth="176.0" styleClass="plate-1" stylesheets="@../style/main.css" />
+            <AnchorPane layoutX="78.0" layoutY="324.0" prefHeight="200.0" prefWidth="168.0" styleClass="navigation" stylesheets="@../style/main.css" />
+            <AnchorPane layoutX="563.0" layoutY="53.0" prefHeight="200.0" prefWidth="619.0" styleClass="plate" stylesheets="@../style/main.css" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="mainBoard" layoutX="347.0" layoutY="56.0" prefHeight="747.0" prefWidth="1226.0" />
+      <AnchorPane prefHeight="839.0" prefWidth="336.0" styleClass="navigation" stylesheets="@../style/main.css">
+         <children>
+            <Text fill="WHITE" layoutX="67.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BROOMS Hostels">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+            <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" layoutX="139.0" layoutY="110.0" size="50" />
+            <Button layoutX="61.0" layoutY="339.0" mnemonicParsing="false" onAction="#roomManageOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="Rooms" />
+            <Button layoutX="61.0" layoutY="253.0" mnemonicParsing="false" onAction="#studentManageOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="Student">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="61.0" layoutY="420.0" mnemonicParsing="false" onAction="#reservationFormOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="Reservation" />
+            <Button layoutX="61.0" layoutY="506.0" mnemonicParsing="false" onAction="#viewDetailsOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="View Details" />
+            <Button layoutX="61.0" layoutY="597.0" mnemonicParsing="false" onAction="#UserOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="User Settings" />
+            <Button layoutX="61.0" layoutY="705.0" mnemonicParsing="false" onAction="#logOutOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="Log Out" />
+            <Button layoutX="61.0" layoutY="172.0" mnemonicParsing="false" onAction="#dashboardOnAction" prefHeight="41.0" prefWidth="228.0" styleClass="nav-btn" stylesheets="@../style/main.css" text="Dashboard">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Text layoutX="418.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hostel Management Stystem">
          <font>
             <Font name="Microsoft Sans Serif" size="25.0" />
          </font>
       </Text>
-      <Separator layoutX="17.0" layoutY="63.0" prefHeight="2.0" prefWidth="994.0" />
-      <Separator layoutX="17.0" layoutY="551.0" prefHeight="3.0" prefWidth="994.0" />
-      <FontAwesomeIconView glyphName="HOME" layoutX="355.0" layoutY="48.0" size="40" />
-      <Text layoutX="487.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version 1.1.0" />
-      <Button layoutX="121.0" layoutY="173.0" mnemonicParsing="false" onAction="#studentManageOnAction" prefHeight="41.0" prefWidth="228.0" text="Student" />
-      <Button layoutX="121.0" layoutY="243.0" mnemonicParsing="false" onAction="#roomManageOnAction" prefHeight="41.0" prefWidth="228.0" text="Rooms" />
-      <Button layoutX="121.0" layoutY="318.0" mnemonicParsing="false" onAction="#reservationFormOnAction" prefHeight="41.0" prefWidth="228.0" text="Reservation" />
-      <Button layoutX="121.0" layoutY="391.0" mnemonicParsing="false" onAction="#viewDetailsOnAction" prefHeight="41.0" prefWidth="228.0" text="View Details" />
-      <ImageView fitHeight="456.0" fitWidth="491.0" layoutX="488.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../assets/Student.png" />
-         </image>
-      </ImageView>
-      <Separator layoutX="420.0" layoutY="125.0" orientation="VERTICAL" prefHeight="363.0" prefWidth="1.0" />
-      <Button layoutX="121.0" layoutY="455.0" mnemonicParsing="false" onAction="#UserOnAction" prefHeight="41.0" prefWidth="228.0" text="User Settings" />
+      <FontAwesomeIconView glyphName="HOME" layoutX="361.0" layoutY="41.0" size="40" />
+      <FontAwesomeIconView fill="#385cb5" glyphName="BELL" layoutX="1514.0" layoutY="34.0" size="25" />
+      <TextField layoutX="1192.0" layoutY="12.0" prefHeight="28.0" prefWidth="214.0" promptText="Search" />
+      <FontAwesomeIconView glyphName="USER" layoutX="1483.0" layoutY="35.0" size="27" />
+      <Text layoutX="1425.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin" wrappingWidth="56.83984375">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Line endX="1092.0" layoutX="450.0" layoutY="50.0" startX="-100.0" />
    </children>
 </AnchorPane>

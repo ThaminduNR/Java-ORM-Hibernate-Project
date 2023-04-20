@@ -1,38 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pane" prefHeight="529.0" prefWidth="1014.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hibernate.controllers.LoginFormController">
+<AnchorPane fx:id="pane" prefHeight="791.0" prefWidth="1189.0" styleClass="side-bar" stylesheets="@../style/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.hibernate.controllers.LoginFormController">
    <children>
-      <AnchorPane layoutX="426.0" layoutY="-1.0" prefHeight="529.0" prefWidth="588.0" />
-      <Button layoutX="759.0" layoutY="415.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="36.0" prefWidth="125.0" text="Login" />
-      <AnchorPane prefHeight="529.0" prefWidth="429.0" styleClass="side-bar" stylesheets="@../style/main.css">
+      <AnchorPane layoutX="658.0" layoutY="73.0" prefHeight="660.0" prefWidth="463.0" styleClass="login-pane" stylesheets="@../style/main.css">
          <children>
-            <Text fill="WHITE" layoutX="75.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome to Hostel Management System" textAlignment="CENTER" wrappingWidth="235.3359375">
+            <JFXTextField fx:id="txtUser" layoutX="63.0" layoutY="169.0" prefHeight="36.0" prefWidth="354.0" />
+            <Button layoutX="60.0" layoutY="452.0" mnemonicParsing="false" onAction="#loginOnAction" prefHeight="40.0" prefWidth="354.0" styleClass="login-button" stylesheets="@../style/main.css" text="Login" />
+            <Text layoutX="58.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name" />
+            <Text layoutX="58.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+            <Text layoutX="192.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
                <font>
-                  <Font name="Calibri" size="24.0" />
+                  <Font name="System Bold" size="30.0" />
                </font>
             </Text>
-            <FontAwesomeIconView fill="WHITE" glyphName="BED" layoutX="149.0" layoutY="325.0" size="100" />
-         </children>
-      </AnchorPane>
-      <Text layoutX="531.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User Name" />
-      <Text layoutX="531.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
-      <TextField fx:id="txtUser" layoutX="531.0" layoutY="170.0" prefHeight="36.0" prefWidth="354.0" promptText="Username" />
-      <Text layoutX="690.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+            <CheckBox fx:id="onCheck" layoutX="305.0" layoutY="328.0" mnemonicParsing="false" onAction="#oncheck" prefHeight="31.0" prefWidth="114.0" text="Show Password" />
+            <JFXTextField fx:id="txtpwsText" layoutX="63.0" layoutY="272.0" prefHeight="36.0" prefWidth="354.0" />
+            <JFXPasswordField fx:id="txtPws" layoutX="63.0" layoutY="272.0" prefHeight="36.0" prefWidth="354.0" />
+            <FontAwesomeIconView fill="#d6503c" glyphName="GOOGLE" layoutX="223.0" layoutY="584.0" size="30" />
+            <FontAwesomeIconView fill="#405a93" glyphName="FACEBOOK_SQUARE" layoutX="266.0" layoutY="584.0" size="30" />
+            <FontAwesomeIconView fill="#51a1e9" glyphName="TWITTER_SQUARE" layoutX="179.0" layoutY="584.0" size="30" />
+            <Text layoutX="190.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or Sign Up Using" />
+         </children></AnchorPane>
+      <Line endX="-100.0" endY="508.0" layoutX="131.0" layoutY="249.0" startX="-100.0" stroke="#36b9ff" />
+      <Line endX="-100.0" endY="508.0" layoutX="130.0" layoutY="263.0" startX="302.0" startY="508.0" stroke="#36b9ff" />
+      <Line endX="-100.0" endY="508.0" layoutX="1259.0" layoutY="35.0" startX="-100.0" stroke="#36b9ff" />
+      <Line endX="-100.0" endY="508.0" layoutX="856.0" layoutY="-489.0" startX="302.0" startY="508.0" stroke="#36b9ff" />
+      <Text fill="WHITE" layoutX="47.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Students, international students, interns, backpackers, roomates and digital nomads " wrappingWidth="598.8666960634291">
          <font>
-            <Font size="23.0" />
+            <Font size="14.0" />
          </font>
       </Text>
-      <TextField fx:id="txtpwsText" layoutX="531.0" layoutY="257.0" prefHeight="36.0" prefWidth="354.0" promptText="Password" />
-      <PasswordField fx:id="txtPws" layoutX="531.0" layoutY="257.0" prefHeight="36.0" prefWidth="354.0" promptText="Password" />
-      <CheckBox fx:id="onCheck" layoutX="779.0" layoutY="322.0" mnemonicParsing="false" onAction="#oncheck" prefHeight="31.0" prefWidth="114.0" text="Show Password" />
+      <Text fill="WHITE" layoutX="47.0" layoutY="752.0" strokeType="OUTSIDE" strokeWidth="0.0" text="can book cheap dorms and safe private rooms in downtown Colombo" wrappingWidth="512.8666960634291">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="134.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BROOMS Hostels">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+      </Text>
+      <FontAwesomeIconView fill="WHITE" glyphName="HOTEL" layoutX="465.0" layoutY="121.0" size="50" />
+      <ImageView fitHeight="484.0" fitWidth="489.0" layoutX="91.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/pngegg%20(6).png" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="318.0" layoutY="210.0" prefHeight="51.0" prefWidth="43.0" style="-fx-background-color: #00AEEF;">
+         <children>
+            <FontAwesomeIconView fill="WHITE" glyphName="BED" layoutX="3.0" layoutY="35.0" size="35" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
