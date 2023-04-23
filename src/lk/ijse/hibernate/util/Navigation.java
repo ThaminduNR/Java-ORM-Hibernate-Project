@@ -9,13 +9,13 @@ import java.io.IOException;
 
 public class Navigation {
 
-    private static void setUI(String location) throws IOException {
+    /*private static void setUI(String location) throws IOException {
         Stage stage = new Stage();
         stage.setScene(new Scene(FXMLLoader.load(Navigation.class.getResource("../views/"+location))));
         stage.show();
         stage.centerOnScreen();
 
-    }
+    }*/
 
     public static void navigatePane(Routes route, AnchorPane pane) throws IOException {
         switch (route) {

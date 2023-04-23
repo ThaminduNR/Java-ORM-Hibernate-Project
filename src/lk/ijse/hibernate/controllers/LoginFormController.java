@@ -26,6 +26,11 @@ public class LoginFormController {
     public JFXToggleButton tglbtn;
     public TextField txtpwsText;
     public CheckBox onCheck;
+    public JFXToggleButton oncheck2;
+
+    public void initialize(){
+        txtpwsText.setVisible(false);
+    }
 
     UserBo userBo = (UserBo) BOFactory.getBoFactory().getBO(BOTypes.USER);
 

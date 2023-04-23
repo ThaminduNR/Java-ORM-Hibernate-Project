@@ -26,10 +26,10 @@
       <TextField fx:id="txtQty" layoutX="63.0" layoutY="243.0" prefHeight="34.0" prefWidth="260.0" promptText="Qty Eg - 4" />
       <TableView fx:id="tblRoom" layoutX="66.0" layoutY="385.0" prefHeight="300.0" prefWidth="1101.0">
          <columns>
-            <TableColumn fx:id="colRoomId" prefWidth="230.0" text="Room ID" />
-            <TableColumn fx:id="colRoomType" prefWidth="245.0" text="Room Type" />
-            <TableColumn fx:id="colKeyMoney" prefWidth="226.0" text="Key Money" />
-            <TableColumn fx:id="colQty" prefWidth="196.0" text="Room Qty" />
+            <TableColumn fx:id="colRoomId" prefWidth="305.0" text="Room ID" />
+            <TableColumn fx:id="colRoomType" prefWidth="263.0" text="Room Type" />
+            <TableColumn fx:id="colKeyMoney" prefWidth="268.0" text="Key Money" />
+            <TableColumn fx:id="colQty" prefWidth="264.0" text="Room Qty" />
          </columns>
       </TableView>
       <Button layoutX="791.0" layoutY="302.0" mnemonicParsing="false" onAction="#addRoomOnAction" prefHeight="34.0" prefWidth="103.0" text="Add" />

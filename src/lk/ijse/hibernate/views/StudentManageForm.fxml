@@ -25,7 +25,7 @@
       <TextField fx:id="txtAddress" layoutX="915.0" layoutY="147.0" prefHeight="34.0" prefWidth="260.0" />
       <Text layoutX="66.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact Number" wrappingWidth="116.13671875" />
       <TextField fx:id="txtNumber" layoutX="63.0" layoutY="231.0" prefHeight="34.0" prefWidth="260.0" />
-      <Text layoutX="483.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date" wrappingWidth="80.13671875" />
+      <Text layoutX="483.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB" wrappingWidth="80.13671875" />
       <TextField fx:id="txtDate" layoutX="483.0" layoutY="236.0" prefHeight="34.0" prefWidth="260.0" />
       <Text layoutX="915.0" layoutY="219.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender" wrappingWidth="80.13671875" />
       <TableView fx:id="tblStudent" layoutX="66.0" layoutY="385.0" prefHeight="300.0" prefWidth="1112.0">
